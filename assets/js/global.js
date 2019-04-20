@@ -3,11 +3,7 @@ $(document).ready(function() {
   const $file = $("#file");
   $file.change(function(e) {
     const file = e.target.files[0];
-    if (file && file.type === "text/plain") {
-      console.log("get file");
-    } else {
-        alert('Please drop text file')
-    }
+    handleSelectFile(file);
   });
   $coverBottom.click(function() {
     $file.click();
@@ -23,9 +19,21 @@ $(document).ready(function() {
 });
 function dropFile(e) {
   e.preventDefault();
-  console.log(e.dataTransfer.items);
+  const file = e.dataTransfer.items
+    ? e.dataTransfer.items[0]
+    : e.dataTransfer.files
+    ? e.dataTransfer.files[0]
+    : null;
   setCoverBottomImage("/assets/image/landing2.png");
+  handleSelectFile(file);
 }
 function setCoverBottomImage(src) {
   $("#cover-bottom-image").attr("src", src);
+}
+function handleSelectFile(file) {
+  if (file && file.type === "text/plain") {
+    // TODO: upload file
+  } else {
+    alert("Please drop text file");
+  }
 }
