@@ -48,6 +48,7 @@ function handleSelectFile(file) {
           // TODO: Show output base on return value
           console.log(e);
           $("#loading").hide();
+          showOutput(e.score);
         })
         .fail(function() {
           console.log("An error occurred, the files couldn't be sent!");
@@ -58,4 +59,14 @@ function handleSelectFile(file) {
   } else {
     alert("Please drop text file");
   }
+}
+
+function showOutput(score) {
+  const $output = $("#output");
+  if(score > 0.5) {
+    $output.html('<h1>มีความหวังอยู่นะ</h1>');  
+  }else{
+    $output.html('<h1>ริบหรี่สัสๆ</h1>');  
+  }
+  $output.css("display", "flex");
 }

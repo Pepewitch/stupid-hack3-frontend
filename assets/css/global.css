@@ -118,8 +118,18 @@ body {
 }
 
 .loading-img {
-    width: 300px;
-    max-width: 40%;
+  width: 300px;
+  max-width: 40%;
+}
+
+#output {
+  display: none;
+  padding-top: 2em;
+  justify-content: flex-end;
+  align-items: center;
+  background: #dde8fc;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
