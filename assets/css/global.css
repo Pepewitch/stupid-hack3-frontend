@@ -1,0 +1,13 @@
+.flex-col {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.flex-row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+h1 {
+    color: red;
+}
