@@ -32,7 +32,28 @@ function setCoverBottomImage(src) {
 }
 function handleSelectFile(file) {
   if (file && file.type === "text/plain") {
-    // TODO: upload file
+    $("#cover-bottom").hide();
+    $("#loading").css("display", "flex");
+    const form = new FormData();
+    form.append("file", file);
+    $.ajax({
+      url: "http://localhost:5000/chat",
+      type: "POST",
+      data: form,
+      processData: false,
+      contentType: false
+    })
+    .done(function(e) {
+      // TODO: Show output base on return value
+        console.log(e);
+        $("#loading").hide();
+      })
+      .fail(function() {
+        console.log("An error occurred, the files couldn't be sent!");
+        alert("Upload fail.");
+        location.reload();
+      });
+    $.ajax({});
   } else {
     alert("Please drop text file");
   }

@@ -5,6 +5,10 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 }
 
 .flex-col {
@@ -72,6 +76,16 @@ body {
   width: 100%;
 }
 
+#loading {
+  display: none;
+  padding-top: 2em;
+  justify-content: flex-end;
+  align-items: center;
+  background: #dde8fc;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .cover-bottom-container {
   position: relative;
 }
@@ -96,6 +110,16 @@ body {
 
 .text-icon {
   width: 32px;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+}
+
+.loading-img {
+    width: 300px;
+    max-width: 40%;
 }
 
 @media screen and (max-width: 600px) {
