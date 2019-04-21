@@ -124,17 +124,45 @@ body {
 
 #output {
   display: none;
-  padding-top: 2em;
   justify-content: flex-end;
   align-items: center;
   background: #dde8fc;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
+}
+
+.result-image {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.output-container {
+  padding: 1em 1em 2em 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.output-content {
+  height: 400px;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  padding: 3em 0;
+}
+
+.output-text {
+  font-size: 3em;
+  max-width: 50%;
 }
 
 @media screen and (max-width: 600px) {
   .cover-text {
     font-size: 1.6em;
+  }
+  .output-content { 
+    height: 250px;
   }
 }
 
