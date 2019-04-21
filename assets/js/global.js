@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:5000";
+
 $(document).ready(function() {
   const $coverBottom = $("#cover-bottom");
   const $file = $("#file");
@@ -38,15 +40,13 @@ function handleSelectFile(file) {
       const form = new FormData();
       form.append("file", file);
       $.ajax({
-        url: "http://localhost:5000/chat",
+        url: `${BASE_URL}/chat`,
         type: "POST",
         data: form,
         processData: false,
         contentType: false
       })
         .done(function(e) {
-          // TODO: Show output base on return value
-          console.log(e);
           $("#loading").hide();
           showOutput(e.score);
         })
@@ -96,5 +96,5 @@ function showOutput(score) {
   }
   $outputText.html(text[Math.floor(Math.random() * text.length)]);
   $output.css("display", "flex");
-  $('#sponsor').css("display", "flex");
+  $("#sponsor").css("display", "flex");
 }
