@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://birds-know.herokuapp.com/";
 
 $(document).ready(function() {
   const $coverBottom = $("#cover-bottom");
@@ -21,11 +21,10 @@ $(document).ready(function() {
 });
 function dropFile(e) {
   e.preventDefault();
-  const file = e.dataTransfer.items
-    ? e.dataTransfer.items[0]
-    : e.dataTransfer.files
-    ? e.dataTransfer.files[0]
-    : null;
+  const file =
+    e.dataTransfer.files && e.dataTransfer.files[0]
+      ? e.dataTransfer.files[0]
+      : null;
   setCoverBottomImage("/assets/image/landing2.png");
   handleSelectFile(file);
 }
@@ -53,7 +52,7 @@ function handleSelectFile(file) {
         .fail(function() {
           console.log("An error occurred, the files couldn't be sent!");
           alert("Upload fail.");
-          location.reload();
+          // location.reload();
         });
     }, 3000);
   } else {
@@ -65,6 +64,13 @@ function showOutput(score) {
   const $output = $("#output");
   const $outputText = $("#output-text");
   let text;
+  score = score * 2;
+  if (score > 1) {
+    score = 1;
+  }
+  if (score < 0) {
+    score = 0;
+  }
   if (score < 0.3) {
     text = [
       "แบบนี้นกแน่นอน ไม่ต้องง้องอนคุยต่อให้เสียเวลา ไปหาคนใหม่จะเกิดประโยชน์มากกว่า",
@@ -94,7 +100,11 @@ function showOutput(score) {
       "เขาคิดถึงคุณทุกวินาที"
     ];
   }
-  $outputText.html(text[Math.floor(Math.random() * text.length)]);
+  $outputText.html(
+    `โอกาสนก : ${(100 - score * 100).toFixed(2)}%<br>${
+      text[Math.floor(Math.random() * text.length)]
+    }`
+  );
   $output.css("display", "flex");
   $("#sponsor").css("display", "flex");
 }
